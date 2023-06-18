@@ -12,7 +12,6 @@ class TaskDaoRtDbFb : TaskDao {
     private val TASK_LIST_ROOT_NODE = "taskList"
     private val taskRtDbFbReference = Firebase.database.getReference(TASK_LIST_ROOT_NODE)
 
-    //Simula uma consulta no banco de dados
     private val taskList:MutableList<Task> = mutableListOf()
     init{
         taskRtDbFbReference.addChildEventListener(object: ChildEventListener {
@@ -70,7 +69,6 @@ class TaskDaoRtDbFb : TaskDao {
     }
 
     override fun retrieveTask(id: Int): Task? {
-        //Função com código genérico porque nunca é usada, só serviu de exemplo
         return taskList[taskList.indexOfFirst{id == it.id}]
     }
 
@@ -80,7 +78,7 @@ class TaskDaoRtDbFb : TaskDao {
 
     override fun updateTask(task: Task): Int {
         createOrUpdateTask(task)
-        return 1 //retorna quantas linhas foram modificadas
+        return 1
     }
 
     override fun deleteTask(task: Task): Int {

@@ -30,12 +30,11 @@ class TaskDaoSqlite (context: Context): TaskDao {
 
     }
 
-    //referencia para o banco de dados
+
     private val taskSqliteDatabase: SQLiteDatabase
 
-    // bloco init é sempre executado depois de todos os construtores
+
     init{
-        //criando ou abrindo o banco
         taskSqliteDatabase = context.openOrCreateDatabase(TASK_DATABASE_FILE,
             Context.MODE_PRIVATE, null)
         try{
@@ -47,7 +46,7 @@ class TaskDaoSqlite (context: Context): TaskDao {
 
     override fun createTask(task: Task) {
         taskSqliteDatabase.insert(TASK_TABLE, null, task.toContentValues()).toInt()
-    } //contentValues é um hashamp; funcao single expression
+    }
 
 
     override fun retrieveTask(id: Int): Task? {
@@ -56,7 +55,6 @@ class TaskDaoSqlite (context: Context): TaskDao {
             arrayOf(id.toString())
         )
         val task = if(cursor.moveToFirst()){
-            //preenche contato com dados da posicao atual do cursor
             cursor.rowToTask()
         }else{
             null

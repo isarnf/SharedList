@@ -2,7 +2,6 @@ package br.edu.scl.ifsp.ads.sharedlist.view
 
 import android.content.Intent
 import android.os.*
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -48,7 +47,7 @@ class MainActivity : BaseActivity(), OnTaskClickListener {
         taskController.getTasks()
         //fillContactList()
         amb.taskRv.layoutManager =
-            LinearLayoutManager(this) // informa o listView qual é o adapter que ele irá utilizar
+            LinearLayoutManager(this)
         amb.taskRv.adapter = taskAdapter
 
         carl = registerForActivityResult(
@@ -61,8 +60,8 @@ class MainActivity : BaseActivity(), OnTaskClickListener {
                     result.data?.getParcelableExtra(EXTRA_TASK)
                 }
                 task?.let { _task ->
-                    //if(contactList.any{it.id == _contact.id}){ //any retorna verdaeiro se pelo menos um elemento casa com o predicado (comparacao)
-                    val position = taskList.indexOfFirst { it.id == _task.id } //retorna o indice(index) caso o predicado seja satisfeito, ou seja, caso algum contato da minha lista tenha um id igual
+
+                    val position = taskList.indexOfFirst { it.id == _task.id }
                     if (position != -1) {
                         taskList[position] = _task
                         taskController.editTask(_task)
@@ -78,17 +77,11 @@ class MainActivity : BaseActivity(), OnTaskClickListener {
             }
         }
 
-        //Utiliza uma thread como no jeito abaixo, mas não de forma explícita (a partir de um handler)
         updateViewsHandler = Handler(Looper.myLooper()!!){ msg ->
             taskController.getTasks()
             true
         }
         updateViewsHandler.sendMessageDelayed(Message(), 3000)
-//        Thread{
-//            Thread.sleep(3000)
-//            contactController.getContacts()
-//        }.start()
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -122,8 +115,6 @@ class MainActivity : BaseActivity(), OnTaskClickListener {
         taskAdapter.notifyDataSetChanged()
     }
 
-    // Funções que serão chamadas sempre que uma célula for clicada no RecyclerView
-    // A associação entre uma célula e função será feita no ContactRvAdapter
     override fun onTileTaskClick(position: Int) {
         val task = taskList[position]
         val taskIntent = Intent(this@MainActivity, TaskActivity::class.java)

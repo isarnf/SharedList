@@ -36,13 +36,13 @@ class TaskActivity : BaseActivity() {
                 }
             }
             val viewTask = intent.getBooleanExtra(EXTRA_VIEW_TASK, false)
-                with(atb){
-                    titleEt.isEnabled = !viewTask
-                    descriptionEt.isEnabled = !viewTask
-                    creationUserEt.isEnabled = !viewTask
-                    creationDateEt.isEnabled = !viewTask
-                    dueDateEt.isEnabled = !viewTask
-                    saveBt.visibility = if(viewTask) View.GONE else View.VISIBLE
+            with(atb){
+                titleEt.isEnabled = !viewTask
+                descriptionEt.isEnabled = !viewTask
+                creationUserEt.isEnabled = !viewTask
+                creationDateEt.isEnabled = !viewTask
+                dueDateEt.isEnabled = !viewTask
+                saveBt.visibility = if(viewTask) View.GONE else View.VISIBLE
 
                 }
 

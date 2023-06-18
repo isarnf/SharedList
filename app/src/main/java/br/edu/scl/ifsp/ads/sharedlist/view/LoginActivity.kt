@@ -45,17 +45,14 @@ class LoginActivity : BaseActivity() {
         alb.loginGoogleBt.setOnClickListener{
             val gsa: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
             if (gsa == null){
-                //Solicitar login com conta Google
                 gsarl.launch(googleSignInClient.signInIntent)
             }else{
-                //Já existe um usuário logado com conta google
                 openMainActivity()
             }
         }
 
         gsarl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
             if (result.resultCode == RESULT_OK){
-                //Pegando retorno do login com conta google
                 val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
                 val gsa: GoogleSignInAccount = task.result
                 val credential = GoogleAuthProvider.getCredential(gsa.idToken, null)
