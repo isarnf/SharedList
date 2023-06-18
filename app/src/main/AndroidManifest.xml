@@ -23,6 +23,15 @@
         <activity
             android:name=".view.MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".view.TaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.CreateAccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ResetPasswordActivity"
+            android:exported="false" />
 
     </application>
 

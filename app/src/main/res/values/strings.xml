@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">SharedList</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="creation_user">Creation user</string>
+    <string name="creation_date">Creation date</string>
+    <string name="due_date">Due date</string>
+    <string name="save">Save</string>
+    <string name="task_info">Informações da tarefa</string>
+    <string name="tasks_list">Lista de tarefas</string>
+    <string name="add_task">task</string>
+    <string name="refresh_tasks">Refresh Tasks</string>
 </resources>

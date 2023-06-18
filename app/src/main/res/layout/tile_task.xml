@@ -9,19 +9,19 @@
         android:id="@+id/titleTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="title"
+        android:text="@string/title"
         android:textSize="25sp" />
 
     <TextView
         android:id="@+id/creationDateTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="creationDate" />
+        android:text="@string/creation_date" />
 
     <TextView
-        android:id="@+id/dateCreatedTv"
+        android:id="@+id/dueDateTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="dueDate" />
+        android:text="@string/due_date" />
 
 </LinearLayout>
