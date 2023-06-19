@@ -133,14 +133,14 @@ class MainActivity : BaseActivity(), OnTaskClickListener {
 
     override fun onRemoveMenuItemClick(position: Int) {
         val task = taskList[position]
-        if(!task.isCompleted){
+//        if(!task.isCompleted){
             taskList.removeAt(position)
             taskController.removeTask(task)
             taskAdapter.notifyDataSetChanged()
             Toast.makeText(this, "Tarefa removida!", Toast.LENGTH_LONG).show()
-        }else{
-            Toast.makeText(this, "Tarefa não pode ser removida pois já foi completada!", Toast.LENGTH_LONG).show()
-        }
+//        }else{
+//            Toast.makeText(this, "Tarefa não pode ser removida pois já foi completada!", Toast.LENGTH_LONG).show()
+//        }
 
     }
 

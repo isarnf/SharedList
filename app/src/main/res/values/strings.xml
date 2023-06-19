@@ -15,4 +15,5 @@
     <string name="completed_by">Completed By:</string>
     <string name="created_by">Created by:</string>
     <string name="creationUser">creationUser</string>
+    <string name="dueDate">Due date</string>
 </resources>

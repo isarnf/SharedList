@@ -31,31 +31,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleEt" />
 
-
-
-    <EditText
-        android:id="@+id/creationDateEt"
+    <TextView
+        android:id="@+id/createdOnTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/creation_date"
-        android:inputType="text"
+        android:inputType="date"
+        android:visibility="gone"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionEt" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionEt"
+        />
 
-    <EditText
-        android:id="@+id/dueDateEt"
+    <TextView
+        android:id="@+id/creationDateTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/due_date"
+        android:hint="@string/creation_date"
+        android:inputType="date"
+        android:visibility="gone"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createdOnTv"
+         />
+
+    <Button
+        android:id="@+id/dueDateBt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Pick due date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/creationDateTv" />
+
+    <TextView
+        android:id="@+id/dueDateTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/dueDate"
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creationDateEt" />
+        app:layout_constraintTop_toBottomOf="@+id/dueDateBt" />
 
     <CheckBox android:id="@+id/checkboxCompletionCb"
         android:layout_width="wrap_content"
@@ -64,7 +87,7 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dueDateEt" />
+        app:layout_constraintTop_toBottomOf="@+id/dueDateTv" />
 
     <TextView
         android:id="@+id/createdByTv"
