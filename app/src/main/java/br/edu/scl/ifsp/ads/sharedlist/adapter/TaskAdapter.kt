@@ -9,6 +9,7 @@ import android.widget.TextView
 import br.edu.scl.ifsp.ads.sharedlist.R
 import br.edu.scl.ifsp.ads.sharedlist.databinding.TileTaskBinding
 import br.edu.scl.ifsp.ads.sharedlist.model.Task
+import org.w3c.dom.Text
 
 class TaskAdapter(
     context: Context,
@@ -17,7 +18,7 @@ class TaskAdapter(
     private lateinit var ttb: TileTaskBinding
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val contact: Task = taskList[position]
+        val task: Task = taskList[position]
         var tileTaskView = convertView
         if(tileTaskView == null){
 
@@ -34,6 +35,8 @@ class TaskAdapter(
                 ttb.titleTv,
                 ttb.creationDateTv,
                 ttb.dueDateTv,
+                ttb.statusTv,
+                ttb.completionUserTv,
 
 
             )
@@ -42,9 +45,15 @@ class TaskAdapter(
         }
 
         with(tileTaskView.tag as TileTaskViewHolder){
-            titleTv.text = contact.title
-            creationDateTv.text = contact.creationDate
-            dueDateTv.text = contact.dueDate
+            titleTv.text = task.title
+            creationDateTv.text = "Created on: " + task.creationDate
+            dueDateTv.text = "Due date: " + task.dueDate
+            if(task.isCompleted) statusTv.text= "Completed" else statusTv.text= "Not completed"
+            if(task.isCompleted) {
+                completionUserTv.visibility = View.VISIBLE
+                completionUserTv.text = "Completion user: " + task.completionUser
+            }
+
         }
 
         return tileTaskView
@@ -53,6 +62,8 @@ class TaskAdapter(
     private data class TileTaskViewHolder(
         val titleTv: TextView,
         val creationDateTv: TextView,
-        val dueDateTv: TextView
+        val dueDateTv: TextView,
+        val statusTv: TextView,
+        val completionUserTv: TextView
     )
 }

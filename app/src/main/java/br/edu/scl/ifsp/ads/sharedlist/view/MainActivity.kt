@@ -21,19 +21,14 @@ class MainActivity : BaseActivity(), OnTaskClickListener {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    // Data source
     private val taskList: MutableList<Task> = mutableListOf()
 
-    // Adapter
     private val taskAdapter: TaskRvAdapter by lazy {
         TaskRvAdapter(taskList, this)
     }
 
-
-
     private lateinit var carl: ActivityResultLauncher<Intent>
 
-    //Controller
     private val taskController: TaskController by lazy{
         TaskController(this)
     }
@@ -43,9 +38,11 @@ class MainActivity : BaseActivity(), OnTaskClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(amb.root)
+
         supportActionBar?.subtitle = getString(R.string.tasks_list)
+
         taskController.getTasks()
-        //fillContactList()
+
         amb.taskRv.layoutManager =
             LinearLayoutManager(this)
         amb.taskRv.adapter = taskAdapter
@@ -125,17 +122,26 @@ class MainActivity : BaseActivity(), OnTaskClickListener {
 
     override fun onEditMenuIconClick(position: Int) {
         val task = taskList[position]
-        val taskIntent= Intent(this, TaskActivity::class.java)
-        taskIntent.putExtra(EXTRA_TASK, task)
-        carl.launch(taskIntent)
+        if(!task.isCompleted){
+            val taskIntent= Intent(this, TaskActivity::class.java)
+            taskIntent.putExtra(EXTRA_TASK, task)
+            carl.launch(taskIntent)
+        }else{
+            Toast.makeText(this, "Tarefa não pode ser editada pois já foi completada!", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onRemoveMenuItemClick(position: Int) {
         val task = taskList[position]
-        taskList.removeAt(position)
-        taskController.removeTask(task)
-        taskAdapter.notifyDataSetChanged()
-        Toast.makeText(this, "Tarefa removida!", Toast.LENGTH_LONG).show()
+        if(!task.isCompleted){
+            taskList.removeAt(position)
+            taskController.removeTask(task)
+            taskAdapter.notifyDataSetChanged()
+            Toast.makeText(this, "Tarefa removida!", Toast.LENGTH_LONG).show()
+        }else{
+            Toast.makeText(this, "Tarefa não pode ser removida pois já foi completada!", Toast.LENGTH_LONG).show()
+        }
+
     }
 
     override fun onStart() {

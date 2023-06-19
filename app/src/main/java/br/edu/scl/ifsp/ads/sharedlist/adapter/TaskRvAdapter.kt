@@ -16,6 +16,8 @@ class TaskRvAdapter(
         val titleTv: TextView = tileTaskBinding.titleTv
         val creationDateTv: TextView = tileTaskBinding.creationDateTv
         val dueDateTv: TextView = tileTaskBinding.dueDateTv
+        val statusTv: TextView = tileTaskBinding.statusTv
+        val completionUserTv: TextView = tileTaskBinding.completionUserTv
         var taskPosition = -1
 
         init {
@@ -59,9 +61,17 @@ class TaskRvAdapter(
 
         val task = taskList[position]
 
+        if(task.isCompleted) {
+            holder.completionUserTv.visibility = View.VISIBLE
+            holder.completionUserTv.text = task.completionUser
+        }
+        else holder.completionUserTv.visibility = View.GONE
+
         holder.titleTv.text = task.title
-        holder.creationDateTv.text = task.creationDate
-        holder.dueDateTv.text = task.dueDate
+        holder.creationDateTv.text = "Created on: " + task.creationDate
+        holder.dueDateTv.text = "Due date: " + task.dueDate
+        holder.statusTv.text = if(task.isCompleted) "Status: completed" else "Status: in progress..."
+
         holder.taskPosition = position
         holder.itemView.setOnClickListener{
             onTaskClickListener.onTileTaskClick(position)
@@ -69,12 +79,6 @@ class TaskRvAdapter(
     }
 
 }
-
-
-
-
-
-
 
 
 

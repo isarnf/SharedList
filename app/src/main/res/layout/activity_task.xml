@@ -67,6 +67,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/creationDateEt" />
 
+    <CheckBox android:id="@+id/checkboxCompletionCb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Task completed"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dueDateEt" />
+
+    <TextView
+        android:id="@+id/completedByTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/completed_by"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxCompletionCb" />
+
+    <TextView
+        android:id="@+id/completionUserTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/completionuser"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/completedByTv" />
 
     <Button
         android:id="@+id/saveBt"
@@ -75,5 +103,6 @@
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dueDateEt" />
+        app:layout_constraintTop_toBottomOf="@+id/completionUserTv" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

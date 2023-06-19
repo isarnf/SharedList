@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase
 @Database(entities = [Task::class], version = 1)
 abstract class TaskDaoRoom : RoomDatabase() {
     companion object Constants {
-        const val CONTACT_DATABASE_FILE = "contacts_room"
+        const val TASK_DATABASE_FILE = "tasks_room"
     }
-    abstract fun getContactDao(): TaskDao
+    abstract fun getTaskDao(): TaskDao
 }

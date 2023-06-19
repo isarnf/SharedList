@@ -7,6 +7,7 @@ import android.view.View
 import br.edu.scl.ifsp.ads.sharedlist.R
 import br.edu.scl.ifsp.ads.sharedlist.databinding.ActivityTaskBinding
 import br.edu.scl.ifsp.ads.sharedlist.model.Task
+import com.google.firebase.auth.FirebaseAuth
 
 import kotlin.random.Random
 
@@ -33,18 +34,31 @@ class TaskActivity : BaseActivity() {
                     creationUserEt.setText(creationUser)
                     creationDateEt.setText(creationDate)
                     dueDateEt.setText(dueDate)
-                }
-            }
-            val viewTask = intent.getBooleanExtra(EXTRA_VIEW_TASK, false)
-            with(atb){
-                titleEt.isEnabled = !viewTask
-                descriptionEt.isEnabled = !viewTask
-                creationUserEt.isEnabled = !viewTask
-                creationDateEt.isEnabled = !viewTask
-                dueDateEt.isEnabled = !viewTask
-                saveBt.visibility = if(viewTask) View.GONE else View.VISIBLE
+                    checkboxCompletionCb.isChecked = isCompleted
+                    if(checkboxCompletionCb.isChecked) {
+                        completionUserTv.setText(FirebaseAuth.getInstance().currentUser?.email.toString())
+                        _receivedTask.completionUser = FirebaseAuth.getInstance().currentUser?.email.toString()
+
+                    }
+
 
                 }
+            }
+
+        val viewTask = intent.getBooleanExtra(EXTRA_VIEW_TASK, false)
+        with(atb){
+            titleEt.isEnabled = false
+            descriptionEt.isEnabled = !viewTask
+            creationUserEt.isEnabled = false
+            creationDateEt.isEnabled = false
+            dueDateEt.isEnabled = !viewTask
+            checkboxCompletionCb.isEnabled = !viewTask
+            checkboxCompletionCb.visibility = View.VISIBLE
+            completionUserTv.visibility = if(viewTask && checkboxCompletionCb.isChecked) View.VISIBLE else View.GONE
+            completedByTv.visibility = if(viewTask && checkboxCompletionCb.isChecked) View.VISIBLE else View.GONE
+            saveBt.visibility = if(viewTask) View.GONE else View.VISIBLE
+
+            }
 
         }
 
@@ -56,8 +70,12 @@ class TaskActivity : BaseActivity() {
                 description = atb.descriptionEt.text.toString(),
                 creationUser = atb.creationUserEt.text.toString(),
                 creationDate = atb.creationDateEt.text.toString(),
-                dueDate = atb.dueDateEt.text.toString()
+                dueDate = atb.dueDateEt.text.toString(),
+                isCompleted = atb.checkboxCompletionCb.isChecked,
+                completionUser = atb.completionUserTv.text.toString(),
+
             )
+
 
             val resultIntent = Intent()
             resultIntent.putExtra(EXTRA_TASK, task)
