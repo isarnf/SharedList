@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.scl.ifsp.ads.sharedlist.databinding.TileTaskBinding
 import br.edu.scl.ifsp.ads.sharedlist.model.Task
+import com.google.firebase.auth.FirebaseAuth
 
 class TaskRvAdapter(
     private val taskList: MutableList<Task>,
@@ -71,6 +72,8 @@ class TaskRvAdapter(
             holder.statusTv.text = "Status: in progress..."
         }
 
+
+        holder.completionUserTv.text = task.creationUser
         holder.titleTv.text = task.title
         holder.creationDateTv.text = "Created on: " + task.creationDate
         holder.dueDateTv.text = "Due date: " + task.dueDate

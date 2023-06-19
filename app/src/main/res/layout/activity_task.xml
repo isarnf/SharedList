@@ -31,17 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleEt" />
 
-    <EditText
-        android:id="@+id/creationUserEt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/creation_user"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionEt" />
+
 
     <EditText
         android:id="@+id/creationDateEt"
@@ -53,7 +43,7 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creationUserEt" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionEt" />
 
     <EditText
         android:id="@+id/dueDateEt"
@@ -77,6 +67,26 @@
         app:layout_constraintTop_toBottomOf="@+id/dueDateEt" />
 
     <TextView
+        android:id="@+id/createdByTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/created_by"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxCompletionCb" />
+
+    <TextView
+        android:id="@+id/creationUserTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/creationUser"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createdByTv" />
+
+    <TextView
         android:id="@+id/completedByTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,7 +94,7 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxCompletionCb" />
+        app:layout_constraintTop_toBottomOf="@+id/creationUserTv" />
 
     <TextView
         android:id="@+id/completionUserTv"

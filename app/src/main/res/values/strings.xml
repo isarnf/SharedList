@@ -13,4 +13,6 @@
     <string name="status">status</string>
     <string name="completionuser">completionUser</string>
     <string name="completed_by">Completed By:</string>
+    <string name="created_by">Created by:</string>
+    <string name="creationUser">creationUser</string>
 </resources>

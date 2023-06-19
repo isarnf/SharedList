@@ -31,12 +31,11 @@ class TaskActivity : BaseActivity() {
                 with(_receivedTask){
                     titleEt.setText(title)
                     descriptionEt.setText(description)
-                    creationUserEt.setText(creationUser)
+                    creationUserTv.text = creationUser
                     creationDateEt.setText(creationDate)
                     dueDateEt.setText(dueDate)
                     checkboxCompletionCb.isChecked = isCompleted
                     completionUserTv.text = completionUser
-
 
                 }
             }
@@ -45,8 +44,13 @@ class TaskActivity : BaseActivity() {
         with(atb){
             titleEt.isEnabled = false
             descriptionEt.isEnabled = !viewTask
-            creationUserEt.isEnabled = false
+            creationUserTv.isEnabled = false
+            creationUserTv.visibility = View.VISIBLE
+            createdByTv.visibility = View.VISIBLE
+            createdByTv.isEnabled = false
             creationDateEt.isEnabled = false
+            completionUserTv.isEnabled = false
+            completedByTv.isEnabled = false
             dueDateEt.isEnabled = !viewTask
             checkboxCompletionCb.isEnabled = !viewTask
             checkboxCompletionCb.visibility = View.VISIBLE
@@ -67,19 +71,20 @@ class TaskActivity : BaseActivity() {
                 atb.completionUserTv.visibility = View.GONE
             }
 
+            atb.creationUserTv.text = FirebaseAuth.getInstance().currentUser?.email.toString()
 
             val task: Task = Task(
                 id = receivedTask?.id,
                 title = atb.titleEt.text.toString(),
                 description = atb.descriptionEt.text.toString(),
-                creationUser = atb.creationUserEt.text.toString(),
+                creationUser = atb.creationUserTv.text.toString(),
                 creationDate = atb.creationDateEt.text.toString(),
                 dueDate = atb.dueDateEt.text.toString(),
                 isCompleted = atb.checkboxCompletionCb.isChecked,
                 completionUser = atb.completionUserTv.text.toString(),
-
-
             )
+
+
 
 
             val resultIntent = Intent()

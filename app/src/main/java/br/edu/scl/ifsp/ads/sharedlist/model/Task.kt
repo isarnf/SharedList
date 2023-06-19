@@ -16,6 +16,6 @@ data class Task(
     @NonNull var creationDate: String = "",
     @NonNull var dueDate: String = "",
     @NonNull var isCompleted: Boolean = false,
-    @NonNull var completionUser: String = "",
+    @NonNull var completionUser: String = ""
 ): Parcelable
 
