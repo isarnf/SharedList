@@ -35,11 +35,7 @@ class TaskActivity : BaseActivity() {
                     creationDateEt.setText(creationDate)
                     dueDateEt.setText(dueDate)
                     checkboxCompletionCb.isChecked = isCompleted
-                    if(checkboxCompletionCb.isChecked) {
-                        completionUserTv.setText(FirebaseAuth.getInstance().currentUser?.email.toString())
-                        _receivedTask.completionUser = FirebaseAuth.getInstance().currentUser?.email.toString()
-
-                    }
+                    completionUserTv.text = completionUser
 
 
                 }
@@ -64,6 +60,14 @@ class TaskActivity : BaseActivity() {
 
 
         atb.saveBt.setOnClickListener{
+
+            if(atb.checkboxCompletionCb.isChecked) {
+                atb.completionUserTv.text = FirebaseAuth.getInstance().currentUser?.email.toString()
+            }else{
+                atb.completionUserTv.visibility = View.GONE
+            }
+
+
             val task: Task = Task(
                 id = receivedTask?.id,
                 title = atb.titleEt.text.toString(),
@@ -73,6 +77,7 @@ class TaskActivity : BaseActivity() {
                 dueDate = atb.dueDateEt.text.toString(),
                 isCompleted = atb.checkboxCompletionCb.isChecked,
                 completionUser = atb.completionUserTv.text.toString(),
+
 
             )
 

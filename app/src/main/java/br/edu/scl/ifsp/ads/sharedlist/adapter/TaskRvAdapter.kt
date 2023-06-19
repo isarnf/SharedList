@@ -63,15 +63,17 @@ class TaskRvAdapter(
 
         if(task.isCompleted) {
             holder.completionUserTv.visibility = View.VISIBLE
-            holder.completionUserTv.text = task.completionUser
+            holder.completionUserTv.text = "Completion user: " + task.completionUser
+            holder.statusTv.text = "Status: completed"
         }
-        else holder.completionUserTv.visibility = View.GONE
+        else {
+            holder.completionUserTv.visibility = View.GONE
+            holder.statusTv.text = "Status: in progress..."
+        }
 
         holder.titleTv.text = task.title
         holder.creationDateTv.text = "Created on: " + task.creationDate
         holder.dueDateTv.text = "Due date: " + task.dueDate
-        holder.statusTv.text = if(task.isCompleted) "Status: completed" else "Status: in progress..."
-
         holder.taskPosition = position
         holder.itemView.setOnClickListener{
             onTaskClickListener.onTileTaskClick(position)
