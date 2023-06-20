@@ -1,141 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp"
-    tools:context=".view.TaskActivity">
+    android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/titleEt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/title"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/descriptionEt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:lines="5"
-        android:hint="@string/description"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleEt" />
-
-    <TextView
-        android:id="@+id/createdOnTv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/creation_date"
-        android:inputType="date"
-        android:visibility="gone"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionEt"
-        />
-
-    <TextView
-        android:id="@+id/creationDateTv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/creation_date"
-        android:inputType="date"
-        android:visibility="gone"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createdOnTv"
-         />
-
-    <Button
-        android:id="@+id/dueDateBt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Pick due date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creationDateTv" />
-
-    <TextView
-        android:id="@+id/dueDateTv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/dueDate"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dueDateBt" />
-
-    <CheckBox android:id="@+id/checkboxCompletionCb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Task completed"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dueDateTv" />
-
-    <TextView
-        android:id="@+id/createdByTv"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/created_by"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxCompletionCb" />
+        android:padding="10dp"
+        tools:context=".view.TaskActivity">
 
-    <TextView
-        android:id="@+id/creationUserTv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/creationUser"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createdByTv" />
+        <EditText
+            android:id="@+id/titleEt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/title"
+            android:inputType="text"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/completedByTv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/completed_by"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creationUserTv" />
+        <EditText
+            android:id="@+id/descriptionEt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:lines="5"
+            android:hint="@string/description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleEt" />
 
-    <TextView
-        android:id="@+id/completionUserTv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/completionuser"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/completedByTv" />
+        <TextView
+            android:id="@+id/createdOnTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/creation_date"
+            android:inputType="date"
+            android:visibility="gone"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionEt"
+            />
 
-    <Button
-        android:id="@+id/saveBt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/completionUserTv" />
+        <TextView
+            android:id="@+id/creationDateTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/creation_date"
+            android:inputType="date"
+            android:visibility="gone"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createdOnTv"
+             />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/dueDateBt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Pick due date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/creationDateTv" />
+
+        <TextView
+            android:id="@+id/dueDateTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/dueDate"
+            android:inputType="text"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dueDateBt" />
+
+        <CheckBox android:id="@+id/checkboxCompletionCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Task completed"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dueDateTv" />
+
+        <TextView
+            android:id="@+id/createdByTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/created_by"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkboxCompletionCb" />
+
+        <TextView
+            android:id="@+id/creationUserTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/creationUser"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createdByTv" />
+
+        <TextView
+            android:id="@+id/completedByTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/completed_by"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/creationUserTv" />
+
+        <TextView
+            android:id="@+id/completionUserTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/completionuser"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/completedByTv" />
+
+        <Button
+            android:id="@+id/saveBt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/completionUserTv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
