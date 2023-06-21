@@ -62,10 +62,10 @@ class MainActivity : BaseActivity(), OnTaskClickListener {
                     if (position != -1) {
                         taskList[position] = _task
                         taskController.editTask(_task)
-                        Toast.makeText(this, "Tarefa editada!", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "Task edited!", Toast.LENGTH_LONG).show()
                     } else {
                         taskController.insertTask(_task)
-                        Toast.makeText(this, "Tarefa adicionada!", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "Task added!", Toast.LENGTH_LONG).show()
                     }
                     taskController.getTasks()
                     taskAdapter.notifyDataSetChanged()
@@ -127,27 +127,27 @@ class MainActivity : BaseActivity(), OnTaskClickListener {
             taskIntent.putExtra(EXTRA_TASK, task)
             carl.launch(taskIntent)
         }else{
-            Toast.makeText(this, "Tarefa não pode ser editada pois já foi completada!", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Task can't be edited because it's already completed!", Toast.LENGTH_LONG).show()
         }
     }
 
     override fun onRemoveMenuItemClick(position: Int) {
         val task = taskList[position]
-//        if(!task.isCompleted){
+        if(!task.isCompleted){
             taskList.removeAt(position)
             taskController.removeTask(task)
             taskAdapter.notifyDataSetChanged()
-            Toast.makeText(this, "Tarefa removida!", Toast.LENGTH_LONG).show()
-//        }else{
-//            Toast.makeText(this, "Tarefa não pode ser removida pois já foi completada!", Toast.LENGTH_LONG).show()
-//        }
+            Toast.makeText(this, "Task removed!", Toast.LENGTH_LONG).show()
+        }else{
+            Toast.makeText(this, "Task can't be removed because it's already completed!", Toast.LENGTH_LONG).show()
+        }
 
     }
 
     override fun onStart() {
         super.onStart()
         if (FirebaseAuth.getInstance().currentUser == null){
-            Toast.makeText(this, "Não há usuário autenticado!", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "There isn't any authenticated user!", Toast.LENGTH_LONG).show()
             finish()
         }
     }

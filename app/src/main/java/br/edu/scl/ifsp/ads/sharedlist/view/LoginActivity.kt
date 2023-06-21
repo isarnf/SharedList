@@ -35,10 +35,10 @@ class LoginActivity : BaseActivity() {
             val password = alb.passwordEt.text.toString()
 
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).addOnSuccessListener {
-                Toast.makeText(this, "Usuário $email autenticado com sucesso!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "User $email successfully authenticated!", Toast.LENGTH_LONG).show()
                 openMainActivity()
             }.addOnFailureListener {
-                Toast.makeText(this, "Falha na autenticação do usuário!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Authentication failed!", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -58,10 +58,10 @@ class LoginActivity : BaseActivity() {
                 val credential = GoogleAuthProvider.getCredential(gsa.idToken, null)
 
                 FirebaseAuth.getInstance().signInWithCredential(credential).addOnSuccessListener {
-                    Toast.makeText(this, "Usuário ${gsa.email} autenticado com sucesso!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "User ${gsa.email} successfully authenticated!", Toast.LENGTH_LONG).show()
                     openMainActivity()
                 }.addOnFailureListener {
-                    Toast.makeText(this, "Falha na autenticação de usuário!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Authentication failed!", Toast.LENGTH_LONG).show()
                 }
             }
         }

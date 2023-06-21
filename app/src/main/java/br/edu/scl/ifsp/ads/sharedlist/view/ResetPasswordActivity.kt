@@ -17,10 +17,10 @@ class ResetPasswordActivity : BaseActivity() {
             val email = arpb.recoveryPasswordEmailEt.text.toString()
             FirebaseAuth.getInstance().sendPasswordResetEmail(email).addOnCompleteListener { resultado ->
                 if(resultado.isSuccessful){
-                    Toast.makeText(this, "E-mail de recuperação enviado para $email", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Recovering e-mail sent to $email", Toast.LENGTH_LONG).show()
                     finish()
                 }else{
-                    Toast.makeText(this, "Falha no envio do email de recuperação!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Recovering e-mail not sent!", Toast.LENGTH_LONG).show()
                 }
             }
         }

@@ -5,7 +5,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.scl.ifsp.ads.sharedlist.databinding.TileTaskBinding
 import br.edu.scl.ifsp.ads.sharedlist.model.Task
-import com.google.firebase.auth.FirebaseAuth
 
 class TaskRvAdapter(
     private val taskList: MutableList<Task>,
@@ -30,14 +29,14 @@ class TaskRvAdapter(
             v: View?,
             menuInfo: ContextMenu.ContextMenuInfo?
         ) {
-            menu?.add(Menu.NONE, 0, 0, "Editar")?.setOnMenuItemClickListener {
+            menu?.add(Menu.NONE, 0, 0, "Edit")?.setOnMenuItemClickListener {
                 if (taskPosition != -1) {
                     onTaskClickListener.onEditMenuIconClick(taskPosition)
 
                 }
                 true
             }
-            menu?.add(Menu.NONE, 1, 1, "Remover")?.setOnMenuItemClickListener {
+            menu?.add(Menu.NONE, 1, 1, "Remove")?.setOnMenuItemClickListener {
                 if (taskPosition != -1) {
                     onTaskClickListener.onRemoveMenuItemClick(taskPosition)
 

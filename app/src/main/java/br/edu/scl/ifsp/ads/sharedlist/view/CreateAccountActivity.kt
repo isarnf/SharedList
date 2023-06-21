@@ -20,27 +20,25 @@ class CreateAccountActivity : BaseActivity() {
             val password2 = acab.repeatPasswordEt.text.toString()
 
             if (password.equals(password2)) {
-                //Cria a conta no firebase
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                     .addOnSuccessListener {
                         Toast.makeText(
                             this@CreateAccountActivity,
-                            "Usuário $email criado com sucesso!",
+                            "User $email registered!",
                             Toast.LENGTH_LONG
                         ).show()
                         finish()
                     }.addOnFailureListener {
                         Toast.makeText(
                             this@CreateAccountActivity,
-                            "Erro na criação do usuário!",
+                            "Error during the user creation!",
                             Toast.LENGTH_LONG
                         ).show()
                     }
             } else {
-                //Senhas não batem
                 Toast.makeText(
                     this@CreateAccountActivity,
-                    "Senhas não coincidem!",
+                    "Passwords don't match!",
                     Toast.LENGTH_LONG
                 ).show()
             }

@@ -17,7 +17,7 @@
     <item
         android:id="@+id/signOutMi"
         android:icon="@drawable/ic_signout"
-        android:title="Deslogar"
+        android:title="@string/log_out"
         app:showAsAction="ifRoom" />
 
 </menu>

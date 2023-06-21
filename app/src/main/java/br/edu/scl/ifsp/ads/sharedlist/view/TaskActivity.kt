@@ -5,17 +5,12 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import br.edu.scl.ifsp.ads.sharedlist.R
-import br.edu.scl.ifsp.ads.sharedlist.controller.TaskController
 import br.edu.scl.ifsp.ads.sharedlist.databinding.ActivityTaskBinding
 import br.edu.scl.ifsp.ads.sharedlist.model.Task
 import com.google.firebase.auth.FirebaseAuth
-import java.text.DateFormat
+import java.time.LocalDate
 import java.util.*
-
-
-import kotlin.random.Random
 
 class TaskActivity : BaseActivity() {
 
@@ -51,16 +46,11 @@ class TaskActivity : BaseActivity() {
         with(atb){
             titleEt.isEnabled = false
             descriptionEt.isEnabled = !viewTask
-            creationUserTv.isEnabled = false
             creationUserTv.visibility = View.VISIBLE
             createdByTv.visibility = View.VISIBLE
-            createdByTv.isEnabled = false
-            creationDateTv.isEnabled = false
             createdOnTv.isEnabled = false
             creationDateTv.visibility = View.VISIBLE
             createdOnTv.visibility = View.VISIBLE
-            completionUserTv.isEnabled = false
-            completedByTv.isEnabled = false
             dueDateTv.visibility = View.VISIBLE
             dueDateBt.isEnabled = !viewTask
             dueDateBt.visibility = View.VISIBLE
@@ -70,24 +60,26 @@ class TaskActivity : BaseActivity() {
             completedByTv.visibility = if(viewTask && checkboxCompletionCb.isChecked) View.VISIBLE else View.GONE
             saveBt.visibility = if(viewTask) View.GONE else View.VISIBLE
 
+
             }
 
         }
 
-        val calendarCreationDate: Calendar = Calendar.getInstance()
-        atb.creationDateTv.text = DateFormat.getDateInstance(DateFormat.SHORT, Locale.UK).format(calendarCreationDate.time)
+
+        val localDateCreationDate  = LocalDate.now().toString()
+        atb.creationDateTv.text = localDateCreationDate
 
         val calendarDueDate: Calendar = Calendar.getInstance()
         val year = calendarDueDate.get(Calendar.YEAR)
         val month = calendarDueDate.get(Calendar.MONTH)
-
         val day = calendarDueDate.get(Calendar.DAY_OF_MONTH)
         atb.dueDateBt.setOnClickListener {
             val datePicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{view, mYear, mMonth, mDay ->
-                atb.dueDateTv.text = "" + mDay + "/" + (mMonth+1) + "/" + mYear
+                atb.dueDateTv.text = LocalDate.of(mYear, mMonth+1, mDay).toString()
             }, year, month, day)
             datePicker.show()
         }
+
 
         atb.saveBt.setOnClickListener{
 
@@ -121,8 +113,4 @@ class TaskActivity : BaseActivity() {
         }
     }
 
-    private fun generateId(): Int {
-        val random = Random(System.currentTimeMillis())
-        return random.nextInt()
-    }
 }

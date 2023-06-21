@@ -6,8 +6,8 @@
     <string name="creation_date">Creation date</string>
     <string name="due_date">Due date</string>
     <string name="save">Save</string>
-    <string name="task_info">Informações da tarefa</string>
-    <string name="tasks_list">Lista de tarefas</string>
+    <string name="task_info">Task information</string>
+    <string name="tasks_list">Tasks list</string>
     <string name="add_task">task</string>
     <string name="refresh_tasks">Refresh Tasks</string>
     <string name="status">status</string>
@@ -16,4 +16,5 @@
     <string name="created_by">Created by:</string>
     <string name="creationUser">creationUser</string>
     <string name="dueDate">Due date</string>
+    <string name="log_out">Log out</string>
 </resources>
